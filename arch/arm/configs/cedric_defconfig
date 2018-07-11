@@ -99,9 +99,21 @@ CONFIG_NETLINK_DIAG=y
 
 
 # to fix ping issue:
+#doesn't work. CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=y
 
-CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=y
+## copied from potter ::
 
+
+# Maybe this will fix "no space on device" problems?
+CONFIG_CFS_BANDWIDTH=y
+
+# Disable both of these because they cause permission denied errors
+CONFIG_ANDROID_PARANOID_NETWORK=n
+# This requires commits taken from halium bullhead, from Jul 10, 2017
+CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=n
+# (rei: not sure whether ^ SHOULD be =n; pme and bullhead have it as =y...)
+
+## end of copied from potter ;;
 
 # ::::::::::::::
 
