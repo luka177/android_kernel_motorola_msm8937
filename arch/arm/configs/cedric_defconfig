@@ -74,8 +74,6 @@ CONFIG_IKCONFIG_PROC=y
 # for debugging:
 CONFIG_PSTORE_PMSG=y
 
-# sign kernel modules so they can be loaded (may disable strict mode later):
-CONFIG_MODULE_SIG_ALL=y
 
 
 # to fix LXC:
@@ -110,10 +108,29 @@ CONFIG_CFS_BANDWIDTH=y
 # Disable both of these because they cause permission denied errors
 CONFIG_ANDROID_PARANOID_NETWORK=n
 # This requires commits taken from halium bullhead, from Jul 10, 2017
-CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=n
+#CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=n
 # (rei: not sure whether ^ SHOULD be =n; pme and bullhead have it as =y...)
 
+CONFIG_SECURITY_ANDROID_GID_CAPABILITIES=y
+
 ## end of copied from potter ;;
+
+## disable kernel module signing
+
+### OLD
+# CONFIG_MODULE_SIG=y
+# CONFIG_MODULE_SIG_FORCE=y
+# CONFIG_MODULE_SIG_SHA512=y
+# sign kernel modules so they can be loaded (may disable strict mode later):
+# CONFIG_MODULE_SIG_ALL=y
+
+### NEW
+
+# CONFIG_MODULE_SIG is not set
+# CONFIG_MODULE_SIG_FORCE is not set
+# CONFIG_MODULE_SIG_SHA512 is not set
+# CONFIG_MODULE_SIG_ALL is not set
+
 
 # ::::::::::::::
 
@@ -147,9 +164,6 @@ CONFIG_MODULES=y
 CONFIG_MODULE_UNLOAD=y
 CONFIG_MODULE_FORCE_UNLOAD=y
 CONFIG_MODVERSIONS=y
-CONFIG_MODULE_SIG=y
-CONFIG_MODULE_SIG_FORCE=y
-CONFIG_MODULE_SIG_SHA512=y
 CONFIG_PARTITION_ADVANCED=y
 CONFIG_ARCH_MSM=y
 CONFIG_ARCH_MSM8916=y
